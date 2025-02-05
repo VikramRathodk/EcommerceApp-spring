@@ -2,7 +2,8 @@ package com.devvikram.EcommerceApp.servies;
 
 import com.devvikram.EcommerceApp.models.Product;
 import com.devvikram.EcommerceApp.repository.ProductRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -20,6 +21,10 @@ public class ProductService {
 
     public List<Product> getAllProducts() {
         return productRepository.findAll();
+    }
+
+    public Page<Product> getProducts(Pageable pageable){
+        return productRepository.findAll(pageable);
     }
 
     public Product addProduct(Product product, MultipartFile imageFile) throws IOException {

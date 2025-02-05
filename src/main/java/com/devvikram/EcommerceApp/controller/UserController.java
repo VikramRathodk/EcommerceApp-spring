@@ -1,6 +1,7 @@
 package com.devvikram.EcommerceApp.controller;
 
 
+import com.devvikram.EcommerceApp.aspects.LogExecutionTime;
 import com.devvikram.EcommerceApp.models.User;
 import com.devvikram.EcommerceApp.servies.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,6 +46,7 @@ public class UserController {
     }
 
     @PostMapping("/login")
+    @LogExecutionTime
     public ResponseEntity<?> login(@RequestBody User loginRequest) {
         return userService.verifyUser(loginRequest);
     }
